@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+
+    <!-- ------style Css ------------->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family:'Courier New', Courier, monospace;
+        }
+
+        .container{
+            background-color: darkcyan;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .input{
+            width: 100%;
+            font-size: 20px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        .payment{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+    </style>
+
+    <!-- --------style Css end------------ -->
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Calculator</h1>
+        <p>Loan Amount $
+            <input onchange="calculatLoan()" class="input" type="number" id="Load-amonut" min="1" max="500000" value="10000">
+        </p>
+        <p>Interest Rate %
+            <input  onchange="calculatLoan()" class="input" type="number" id="interest-rate" min="0" max="100" value="10" step=".1">
+        </p>
+        <p>Months to pay
+            <input  onchange="calculatLoan()" class="input" type="number" id="months-to-pay" min="6" max="48" value="12">
+        </p>
+
+        <p class="payment" id="payment">Monthly Payment:</p>
+    </div>
+
+    <!-- ---------------------javascrip---------------------- -->
+
+    <script>
+        function calculatLoan() {
+           loanAmountValue = document.getElementById("Load-amonut").value;
+
+           interestRateValue = document.getElementById("interest-rate").value;
+
+            monthsToPayValue = document.getElementById("months-to-pay").value;
+
+            interes =( loanAmountValue * (interestRateValue * 0.01)) /monthsToPayValue;
+
+            monthlyPayment = (loanAmountValue / monthsToPayValue + interes) .toFixed(2);
+
+            document.getElementById("payment").innerHTML = `Monthly Payment: $${monthlyPayment}`;
+        }
+
+
+    </script>
+</body>
+</html>

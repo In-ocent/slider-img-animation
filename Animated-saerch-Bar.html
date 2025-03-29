@@ -31,22 +31,67 @@
             height: 50px;
             border-radius: 50px;
             margin: 10px;
+           transition: 1.5s ;
+            position: relative;
         }
         .magnifier{
             width: 25px;
+            position: absolute;
+            cursor: pointer;
+            left: 18px;
         }
 
         .mic-icon{
             width: 30px;
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            transition: width 0.5s;
+            transition-delay: 1s;
+        }
+
+        .input{
+            background-color: transparent;
+            border: none;
+            margin: 10px 50px;
+            outline: none;
+            color: rgb(100, 100, 100);
+            transition: width 1s;
+            transition-delay: 0.5s;
+            width: 100%;
+        }
+
+        .active.search-bar-container{
+            width: 50px;
+        }
+
+        .active .input{
+            width: 0;
+        }
+
+        .active .mic-icon{
+            width: 0;
         }
      </style>
 <!-- -------------------style End css -->
 
 <body>
-    <div class="search-bar-container">
+    <div class="search-bar-container active">
         <img src="https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--128.png" alt="magnifier" class="magnifier">
         <input type="text" class="input" placeholder="search...">
         <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-128.png" alt="mic-icon" class="mic-icon">
     </div>
+
+
+    <!-- ------------javascrip--------- -->
+     <script>
+        const searchBarContainerEl = document.querySelector(".search-bar-container")
+        const magnifierEl = document.querySelector(".magnifier")
+
+
+        magnifierEl.addEventListener("click",()=>{
+            searchBarContainerEl.classList.toggle("active")
+        })
+     </script>
 </body>
 </html>

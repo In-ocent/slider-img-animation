@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Prifile Statistic</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+        }
+        .stats-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .counter {
+            font-size: 48px;
+            color: #333;
+        }
+        h4 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        @media (max-width:600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10em;
+            }
+            .stats-container {
+                margin-bottom: 20px;
+                width: 80%;
+            }
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="stats-container">
+            <i class="fa fa-briefcase fa-3x" aria-hidden="true"></i>
+            <div class="counter" data-ceil="15">15</div>
+            <h4>Years Experience</h4>
+        </div>
+        <div class="stats-container">
+            <i class="fa fa-cloud fa-3x" aria-hidden="true"></i>
+            <div class="counter" data-ceil="260">260</div>
+            <h4>Website Mode</h4>
+        </div>
+        <div class="stats-container">
+            <i class="fab fa-apple fa-3x" aria-hidden="true"></i>
+            <div class="counter" data-ceil="27">27</div>
+            <h4>Apps Made</h4>
+        </div>
+    </div>
+
+    <!-- ---------------javascrip---------------- -->
+    <script>const countersEl = document.querySelectorAll('.counter');
+
+        countersEl.forEach(counter => {
+            counter.innerText = "0"; // Remove unnecessary space
+        
+            function incrementCounter() {
+                let currentNum = +counter.innerText;
+                const targetCeil = counter.getAttribute('data-ceil');
+                const increment = targetCeil / 15;
+        
+                currentNum = Math.ceil(currentNum + increment); // Fix Math object reference
+        
+                if (currentNum < targetCeil) {
+                    counter.innerText = currentNum;
+                    setTimeout(incrementCounter, 50);
+                } else {
+                    counter.innerText = targetCeil; // Ensure the final value is set correctly
+                }
+            }
+        
+            incrementCounter(); // Call function after defining it
+        });
+        
+    </script>
+</body>
+</html>
