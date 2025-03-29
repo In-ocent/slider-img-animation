@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Search Bar</title>
+</head>
+    <!-- --------styl css------------ -->
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: aliceblue;
+        }
+
+        .search-bar-container{
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -6px -6px 10px rgba(255, 255, 355,0.2);
+            width: 300px;
+            height: 50px;
+            border-radius: 50px;
+            margin: 10px;
+        }
+        .magnifier{
+            width: 25px;
+        }
+
+        .mic-icon{
+            width: 30px;
+        }
+     </style>
+<!-- -------------------style End css -->
+
+<body>
+    <div class="search-bar-container">
+        <img src="https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Magnifier-Search-Zoom--128.png" alt="magnifier" class="magnifier">
+        <input type="text" class="input" placeholder="search...">
+        <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-128.png" alt="mic-icon" class="mic-icon">
+    </div>
+</body>
+</html>

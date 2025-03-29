@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Ripple Efect</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+    }
+
+    .btn{
+        background-color: pink;
+        padding: 20px 40px;
+        border-radius: 5px;
+        box-shadow: 0 4px  8px rgba(0, 0, 0, .3);
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn span{
+        position: relative;
+        z-index: 1;
+    }
+    .btn::before{
+        content: '';
+        position: absolute;
+        background-color: orangered;
+        width: 0;
+        height: 0;
+        left: var(--xpos);
+        height: var(--ypos);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        transition: width 0.5s, height 0.5s;
+    }
+
+    .btn:hover::before{
+        width: 300px;
+        height: 300px;   
+    }
+
+</style>
+<body>
+    
+    <a href="#" class="btn"><span>Button</span></a>
+
+    <script>
+        const  btEl = document.querySelector(".btn");
+
+        btEl.addEventListener('mouseover', (event)=>{
+            const x = (event.pageX - btEl.offsetLeft);
+            const y = (event.pageY - btEl.offsetTop)
+
+            btEl.style.setProperty("--xpos", x + "px")
+            btEl.style.setProperty("--ypos", y + "px")
+        })
+    </script>
+</body>
+</html>

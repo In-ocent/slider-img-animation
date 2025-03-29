@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testomonier Slider</title>
+</head>
+
+        <!-- ------CSS stleing--- -->
+         <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+           
+
+            body{
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                height: 100vh;
+                align-items: center;
+                font-family: cursive;
+            }
+            img{
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -50px;
+            }
+            .testimoner-container{
+                width: 500px;
+                height: 300px;
+                background-color: slateblue;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, .3) ;
+                min-width: 400px;
+                padding: 70px 20px;
+                margin: 5px;
+                color: white;
+                position: relative;
+            }
+            h1{
+                margin-top: 2em;
+                font-size: 13px;
+                font-weight: 100;
+            }
+
+         </style>
+        <!--------CSS stleing End--- -->
+
+
+<body>
+    <div class="testimoner-container">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" alt="user-image">
+        <p class="text">I am extremely pleased with the exceptional service and quality products provided by constructin. Their PW&T new cutour is a game-changer in the industry. The innovative design and attention to detail truly set them apart. I highly recommend constructin for anyone looking for top-notch solutions.</p>
+        <h1 class="userName">- Emily Johnson</h1>
+    </div>
+
+
+            <!-- ------javascrip----- -->
+             <script>
+
+                const testimonials = [
+                {
+                    name: "Emily Johnson",
+                    photoUrl: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    tex:"I am extremely pleased with the exceptional service and quality products provided by constructin. Their PW&T new cutour is a game-changer in the industry. The innovative design and attention to detail truly set them apart. I highly recommend constructin for anyone looking for top-notch solutions.",
+
+                },
+                {
+                    name: "- Emma Wilson",
+                    photoUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXJ8ZW58MHx8MHx8fDA%3D",
+                    tex:"I am extremely satisfied with the exceptional service provided by constructin. Their cutting-edge PW&T new cutour product exceeded all my expectations. The quality and craftsmanship are unparalleled. I highly recommend constructin for anyone seeking top-notch solutions.",
+                },
+                {
+                    name: "- Ava Harrison",
+                    photoUrl: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
+                    tex:"I am beyond impressed with the exceptional craftsmanship and attention to detail provided by constructin's PW&T new cutour. From start to finish, the team exceeded my expectations and created a truly bespoke piece that perfectly complements my style. I highly recommend constructin for anyone seeking top-notch quality and professionalism.",
+                }
+                ]
+
+                const imgEl = document.querySelector("img");
+                const textEl = document.querySelector(".text")
+                const userNameEl = document.querySelector(".userName")
+
+                let idx = 0
+
+                updateTestimonial()
+
+                function updateTestimonial() {
+                    const {name, photoUrl, tex} = testimonials[idx];
+                    imgEl.src = photoUrl;
+                    textEl.innerHTML = tex;
+                    userNameEl.innerText = name;
+                    idx++
+
+                    if (idx === testimonials.length) {
+                        idx = 0;
+                    }
+                    setTimeout(()=>{
+                        updateTestimonial()
+                    },10000)
+                }
+
+             </script>
+</body>
+</html>

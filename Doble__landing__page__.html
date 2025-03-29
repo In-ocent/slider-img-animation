@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Landing Page</title>
+</head>
+
+    <!-- -----Style Css----- -->
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        }
+
+        h1{
+            font-size: 100px;
+            color: aliceblue;
+            backdrop-filter: brightness(.5);
+            letter-spacing: 4px;
+        }
+        .split{
+            width: 50%;
+            height: 100%;
+            top: 0;
+            overflow: hidden;
+        }
+
+        .split.left{
+            position: absolute;
+            left: 0;
+            background-color: pink;
+            background-image: url(https://i.ebayimg.com/images/g/p~oAAOSw-sJlczyA/s-l1600.webp);
+            background-size: cover;
+        }
+
+        .split.right{
+            position: absolute;
+            right: 0;
+            background-color: lightskyblue;
+            background-image: url(https://www.telstra.com.au/content/dam/tcom/library/cam-campaign/CAM-DCAEG-77415-samsung-galaxyS25Series-contentStacked-656x370-2x.jpg);
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .btn{
+            background-color: black;
+            color: white;
+            padding: 20px 40px;
+            font-size: 25px;
+            border:4px solid ;
+            cursor: pointer;
+            transition: 1s background-color;
+            white-space: nowrap;
+        }
+        .btn:hover{
+            background: white;
+            color: black;
+        }
+
+        .active-left .left{
+            width: 75%;
+        }
+
+        .active-left .right{
+            width: 25%;
+        }
+        .active-right .left{
+            width: 25%;
+        }
+
+        .active-right .right{
+            width: 75%;
+        }
+
+        .left , .right{
+            transition: width 2s ease-in-out;
+        }
+     </style>
+    <!-- -----Style Css End------ -->
+
+
+<body>
+    <div class="container ">
+        <div class="split left">
+            <h1>Apple</h1>
+            <button class="btn">Buy Now</button>
+        </div>
+        <div class="split right">
+            <h1>Samsung</h1>
+            <button class="btn">Buy Now</button>
+        </div>
+    </div>
+
+
+
+        <!-- ------------javascrip---------- -->
+         <script>
+            
+            const containerEl = document.querySelector(".container");
+            const leftEl = document.querySelector(".left");
+            const rightEl = document.querySelector(".right")
+
+            leftEl.addEventListener("mouseenter", ()=>{
+                containerEl.classList.add("active-left")
+            })
+
+            leftEl.addEventListener("mouseleave", ()=>{
+                containerEl.classList.remove("active-left")
+            })
+
+            rightEl.addEventListener("mouseenter", ()=>{
+                containerEl.classList.add("active-right")
+            })
+
+            rightEl.addEventListener("mouseleave", ()=>{
+                containerEl.classList.remove("active-right")
+            })
+            
+         </script>
+</body>
+</html>

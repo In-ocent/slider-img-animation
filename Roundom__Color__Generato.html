@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+</head>
+    <!-- -------style css -->
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .color-container{
+            background-color: orange;
+            width: 300px;
+            height: 150px;
+            color: white;
+            margin: 5px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            align-content: center;
+            font-size: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
+            border: solid black 2px ;
+            border-radius: 10px;
+        }
+
+     </style>
+
+     <!-- -----------style css end -->
+
+<body>
+    <h1>Random Color Generator</h1>
+    <div class="container">
+
+    </div>
+
+    <!-- ------------javascrip---------- -->
+
+    <script>
+
+const containerEl = document.querySelector(".container");
+
+// Create 30 divs dynamically
+for (let index = 0; index < 3000; index++) {
+    const colorContainerEl = document.createElement("div");
+    colorContainerEl.classList.add("color-container");
+    containerEl.appendChild(colorContainerEl);
+}
+
+const colorContainerEls = document.querySelectorAll(".color-container"); // Select all divs
+console.log(colorContainerEls); // Check if elements exist
+
+function generateColors() {
+    colorContainerEls.forEach((colorContainerEl) => {
+        const newColorCode = randomColor(); // Generate a color
+        colorContainerEl.style.backgroundColor = newColorCode; // Apply the color
+        colorContainerEl.innerHTML = "" + newColorCode;
+    });
+}
+
+// Function to generate random hex color
+function randomColor() {
+    const chars = "0123456789abcdef";
+    const colorCodeLength = 6;
+    let colorCode = "#"; // Start with '#'
+
+    for (let index = 0; index < colorCodeLength; index++) {
+        const randomNum = Math.floor(Math.random() * chars.length);
+        colorCode += chars[randomNum]; // Append a random character
+    }
+
+    return colorCode; // Return the full color
+}
+
+// Call function to apply colors on page load
+generateColors();
+
+    </script>
+</body>
+</html>

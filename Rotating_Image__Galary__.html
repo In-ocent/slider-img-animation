@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Image Galary</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+        justify-content: center;
+        background-color: #000;
+    }
+
+    .imege-container{
+        width: 200px;
+        height: 200px;
+        transform-style: preserve-3d;
+        transform: perspective(1000px) rotateY(0deg);
+        position: relative;
+        transition: transform 0.7s;
+    }
+
+    .imege-container span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+
+    }
+    .imege-container img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .btn-container{
+        position: relative;
+        width: 80%;
+        justify-content: space-between;
+    }
+    .btn{
+        position: absolute;
+        bottom: -80%;
+        background-color: slateblue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover{
+        filter:brightness(1.5) ;
+    }
+    #prev{
+        left: 20%;
+    }
+    #next{
+        right: 20%;
+    }
+</style>
+
+
+<body>
+    <div class="imege-container">
+        <span style="--i: 1">
+            <img src="https://picsum.photos/id/237/300/200" alt="">
+        </span>
+        <span style="--i: 2">
+            <img src="https://picsum.photos/id/23/300/200" alt="">
+        </span>
+        <span style="--i: 3">
+            <img src="https://picsum.photos/id/48/300/200" alt="">
+        </span>
+        <span style="--i: 4">
+            <img src="https://picsum.photos/id/59/300/200" alt="">
+        </span>
+        <span style="--i: 5">
+            <img src="https://picsum.photos/id/120/300/200" alt="">
+        </span>
+        <span style="--i: 6">
+            <img src="https://picsum.photos/id/8/300/200" alt="">
+        </span>
+        <span style="--i: 7">
+            <img src="https://picsum.photos/id/6/300/200" alt="">
+        </span>
+        <span style="--i: 8">
+            <img src="https://picsum.photos/id/21/300/200" alt="">
+        </span>
+        <span style="--i: 9">
+            <img src="https://picsum.photos/id/200/300/200" alt="">
+        </span>
+    </div>
+    <div class="btn-container">
+        <button class="btn" id="prev">Prev</button>
+        <button class="btn" id="next">Next</button>
+    </div>
+
+
+    <!-- -------------javascrip------------ -->
+
+    <script>
+        const imegeContainerEl = document.querySelector(".imege-container");
+        const  prevEl = document.getElementById('prev');
+        const nextEl = document.getElementById("next");
+
+        let x = 0;
+        let timer;
+
+        prevEl.addEventListener("click", ()=>{
+            x = x + 45;
+            clearTimeout(timer)
+            updateGalary()
+        })
+
+        nextEl.addEventListener("click", ()=>{
+            x = x - 45;
+            clearTimeout(timer)
+            updateGalary()
+        })
+
+        function updateGalary() {
+            imegeContainerEl.style.transform = `perspective(1000px) rotateY(${x}deg)`;
+            clearInterval(timer)
+
+            timer = setInterval(()=>{
+                x = x - 45;
+                updateGalary()
+            },3000)
+        }
+
+        updateGalary()
+    </script>
+</body>
+</html>
